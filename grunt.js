@@ -1,4 +1,9 @@
 /* global module:false */
+
+var sauceKey = null;
+if (process.env.TRAVIS_PULL_REQUEST && process.env.TRAVIS_SECURE_ENV_VARS) {
+	sauceKey = process.env.sauceKey;
+}
 module.exports = function(grunt){
 	grunt.initConfig({
 		pkg: '<json:package.json>',
@@ -16,16 +21,12 @@ module.exports = function(grunt){
 		
 		'saucelabs-qunit': {
 			all: {
-				username: 'parashu',
-				key: '0ffbc62b-98ba-4644-a33d-eeb2ed56047d',
+				username: 'indexeddbshim',
+				key: sauceKey,
 				urls: ['http://127.0.0.1:9999/index.html'],
 				tunnelTimeout: 5,
 				browsers: [{
 					browserName: 'opera'
-				}, {
-					browserName: 'safari',
-					platform: 'Mac 10.6',
-					version: '5'
 				}]
 			}
 		}
