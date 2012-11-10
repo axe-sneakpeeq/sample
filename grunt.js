@@ -5,27 +5,39 @@ module.exports = function(grunt){
 		meta: {
 			banner: '/*! <%= pkg.name %> */'
 		},
-		lint: {
-			files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
-		},
-		test: {
-			files: ['test/**/*.js']
-		},
-		
 		server: {
 			base: '.',
-			port: 8000
+			port: 9999
 		},
 		
 		qunit: {
-			all: ['http://localhost:8000/index.html']
+			all: ['http://127.0.0.1:9999/index.html']
 		},
 		
-		uglify: {}
+		'saucelabs-qunit': {
+			all: {
+				username: 'parashu',
+				key: '0ffbc62b-98ba-4644-a33d-eeb2ed56047d',
+				urls: ['http://127.0.0.1:9999/index.html'],
+				tunnelTimeout: 5,
+				browsers: [{
+					browserName: 'opera'
+				}, {
+					browserName: 'safari',
+					platform: 'Mac 10.6',
+					version: '5'
+				}]
+			}
+		}
 	});
 	
-	// Default task.
-	grunt.registerTask('test', 'server qunit');
+	grunt.loadNpmTasks('grunt-saucelabs-qunit');
 	
+	
+	grunt.registerTask('test', function(){
+		grunt.log.writeln(proc.env.TRAVIS_SECURE_ENV_VARS);
+		grunt.log.writeln(proc.env.axe);
+	});
+	grunt.registerTask('test1', 'server saucelabs-qunit');
 	grunt.registerTask('default', 'test');
 };
