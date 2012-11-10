@@ -1,9 +1,4 @@
 /* global module:false */
-
-var sauceKey = null;
-if (process.env.TRAVIS_PULL_REQUEST && process.env.TRAVIS_SECURE_ENV_VARS) {
-	sauceKey = process.env.sauceKey;
-}
 module.exports = function(grunt){
 	grunt.initConfig({
 		pkg: '<json:package.json>',
