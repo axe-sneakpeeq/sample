@@ -1,4 +1,8 @@
 language: node_js
 node_js:
   - 0.8
-  - 0.6
+env:
+    global: 
+      - secure: "GOBZVRN1CuZpiCngOV/ekwsNmz3gyOOiOvcUf7g5Bjq2fGZ+tqcdN+78ISmW\n13nkJz/u+nT2SoAUnbg5GPPKo1JLuLcv/nnZy7rEY5n6H3W1SPH0n1h4eoxa\nWfblHt5C4KaN5c65bsfVjnjuO4J+rTPTR4izzP1KpCu01smgfrI="
+notifications: 
+    email: false

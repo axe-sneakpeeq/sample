@@ -22,7 +22,8 @@
   ],
   "dependencies" : {},
   "devDependencies": {
-    "grunt" :  "*"
+    "grunt" :  "*",
+	"grunt-saucelabs-qunit" : "*"
   },
   "bundleDependencies": [],  
   "license": "MIT",
