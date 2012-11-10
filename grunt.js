@@ -17,7 +17,7 @@ module.exports = function(grunt){
 		'saucelabs-qunit': {
 			all: {
 				username: 'indexeddbshim',
-				key: sauceKey,
+				key: null,
 				urls: ['http://127.0.0.1:9999/index.html'],
 				tunnelTimeout: 5,
 				browsers: [{
@@ -32,7 +32,7 @@ module.exports = function(grunt){
 	
 	grunt.registerTask('test', function(){
 		grunt.log.writeln("Travis Secure Env:" + process.env.TRAVIS_SECURE_ENV_VARS);
-		grunt.log.writeln("saucekey:" + process.env.sauceKey);
+		grunt.log.writeln("saucekey:" + process.env.saucekey);
 	});
 	grunt.registerTask('test1', 'server saucelabs-qunit');
 	grunt.registerTask('default', 'test');
