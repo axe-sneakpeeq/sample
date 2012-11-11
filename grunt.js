@@ -31,6 +31,7 @@ module.exports = function(grunt){
 	
 	
 	grunt.registerTask('test', function(){
+		var done = this.async();
 		grunt.log.writeln("Travis Secure Env:" + process.env.TRAVIS_SECURE_ENV_VARS);
 		grunt.log.writeln("saucekey:" + process.env.saucekey);
 		grunt.log.writeln("github:" + process.env.github);
@@ -46,6 +47,7 @@ module.exports = function(grunt){
 			})
 		}, function(err, response, body){
 			console.log(arguments);
+			done();
 		});
 	});
 	grunt.registerTask('test1', 'server saucelabs-qunit');
