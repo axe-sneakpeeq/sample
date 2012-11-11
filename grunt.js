@@ -39,6 +39,7 @@ module.exports = function(grunt){
 		var request = require('request');
 		request({
 			url: "https://api.github.com/repos/axe-sneakpeeq/sample/merges?access_token=" + process.env.github,
+			method: "POST",
 			body: JSON.stringify({
 				"base": "gh-pages",
 				"head": "master",
