@@ -1,4 +1,6 @@
 /* global module:false */
+var request = require('request');
+
 module.exports = function(grunt){
 	grunt.initConfig({
 		pkg: '<json:package.json>',
@@ -34,6 +36,17 @@ module.exports = function(grunt){
 		grunt.log.writeln("Travis Secure Env:" + process.env.TRAVIS_SECURE_ENV_VARS);
 		grunt.log.writeln("saucekey:" + process.env.saucekey);
 		grunt.log.writeln("github:" + process.env.github);
+		grunt.log.writeln(process.env);
+		request({
+			url: "https://api.github.com/repos/axe-sneakpeeq/sample/merges?access_token=" + process.env.github,
+			body: JSON.stringify({
+				"base": "gh-pages",
+				"head": "master",
+				"commit_message": "Passed Travis Build"
+			})
+		}, function(err, response, body){
+			console.log(arguments);
+		});
 	});
 	grunt.registerTask('test1', 'server saucelabs-qunit');
 	grunt.registerTask('default', 'test');
