@@ -3,6 +3,8 @@ node_js:
   - 0.8
 env:
     global: 
-      - secure: "GOBZVRN1CuZpiCngOV/ekwsNmz3gyOOiOvcUf7g5Bjq2fGZ+tqcdN+78ISmW\n13nkJz/u+nT2SoAUnbg5GPPKo1JLuLcv/nnZy7rEY5n6H3W1SPH0n1h4eoxa\nWfblHt5C4KaN5c65bsfVjnjuO4J+rTPTR4izzP1KpCu01smgfrI="
-notifications: 
+      - secure: "CShPuBnkRCf5O2QAV9+0jboMcDotK5YgONXcag8u4Y4medZpPpcZvM1VtD1u\nbRFm+cDp7FQBDHfUHsVOk6Kb4THCjC9UpKkyyW7lfmm0WZDjcgTM+oDkcfI5\nk3QhOCefYjfnp1eU4LGLgXWI5bS21UnzyHZ5QIV06nktuZy/3Mo=" 
+      - secure: "ecl4TrA8v2gWjs41vPZOok3sTvXpKblpXvuKlCAG3CVa47ddazaMswJaLejY\n7Dq4kmk7wdt9cQfYHKTZ5ax/8i7dmTm8pz/dLYnO4g/ZoACZi5qOtWs6uSZB\nCEih0zFYIGnyNZXoelbc81Z4s49kWyTRZ5xOeBAKVeKBUyuc62A="
+
+notifications:
     email: false
