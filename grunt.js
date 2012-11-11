@@ -38,14 +38,15 @@ module.exports = function(grunt){
 		
 		var request = require('request');
 		request("https://api.travis-ci.org/repos/axe-sneakpeeq/sample/builds.json", function(err, res, body){
-			console.log(JSON.parse(body));
+			var commit = JSON.parse(body)[0]
+			var commitMessage = ["Commit from Travis Build #", commit.number, "\nBuild - https://travis-ci.org/axemclion/IndexedDBShim/builds/", commit.id, "\nBranch : ", commit.branch, " - http://https://github.com/axemclion/IndexedDBShim/commit/", commit.commit];
 			request({
 				url: "https://api.github.com/repos/axe-sneakpeeq/sample/merges?access_token=" + process.env.github,
 				method: "POST",
 				body: JSON.stringify({
 					"base": "gh-pages",
 					"head": "master",
-					"commit_message": "Passed Travis Build"
+					"commit_message": commitMessage.join(" ")
 				})
 			}, function(err, response, body){
 				console.log("Body", body);
