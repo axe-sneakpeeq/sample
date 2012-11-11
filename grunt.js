@@ -38,7 +38,7 @@ module.exports = function(grunt){
 		
 		var request = require('request');
 		request("https://api.travis-ci.org/repos/axe-sneakpeeq/sample/builds.json", function(err, res, body){
-			console.log(body);
+			console.log(JSON.parse(body[0]));
 			request({
 				url: "https://api.github.com/repos/axe-sneakpeeq/sample/merges?access_token=" + process.env.github,
 				method: "POST",
