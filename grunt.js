@@ -37,20 +37,21 @@ module.exports = function(grunt){
 		grunt.log.writeln("github:" + process.env.github);
 		
 		var request = require('request');
-		request({
-			url: "https://api.github.com/repos/axe-sneakpeeq/sample/merges?access_token=" + process.env.github,
-			method: "POST",
-			body: JSON.stringify({
-				"base": "gh-pages",
-				"head": "master",
-				"commit_message": "Passed Travis Build"
-			})
-		}, function(err, response, body){
-			console.log("Error", err);
-			console.log("Response", response);
-			console.log("Body", body);
-			done();
-		});
+		request("https://api.travis-ci.org/repos/axe-sneakpeeq/sample/builds.json", function(err, res, body){
+			console.log(body);
+			request({
+				url: "https://api.github.com/repos/axe-sneakpeeq/sample/merges?access_token=" + process.env.github,
+				method: "POST",
+				body: JSON.stringify({
+					"base": "gh-pages",
+					"head": "master",
+					"commit_message": "Passed Travis Build"
+				})
+			}, function(err, response, body){
+				console.log("Body", body);
+				done();
+			});
+		})
 	});
 	grunt.registerTask('test1', 'server saucelabs-qunit');
 	grunt.registerTask('default', 'test');
